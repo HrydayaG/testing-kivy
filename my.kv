@@ -1,0 +1,320 @@
+<CreateAccountWindow>:
+    name: "create"
+    namee: namee
+    email: email
+    password: passw
+
+    FloatLayout:
+        cols:1
+
+        FloatLayout:
+            size: root.width, root.height
+
+            Image:
+                size_hint_x: 0.5
+                pos_hint: {"x":0.25, "top":1.24999}
+                source: 'l2.jpg'
+                allow_stretch: True
+                keep_ratio: True
+
+            TextInput:
+                text: "Name"
+                pos_hint: {"x":0.1666, "top":0.541666}
+                size_hint: 0.66, 0.041666
+                id: namee
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14.5**4
+
+            TextInput:
+                text: "E-mail"
+                pos_hint: {"x":0.1666, "top":0.41666}
+                size_hint: 0.66, 0.041666
+                id: email
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14.5**4
+
+            TextInput:
+                text: "Password"
+                pos_hint: {"x":0.1666, "top":0.291666}
+                size_hint: 0.66, 0.041666
+                id: passw
+                multiline: False
+                password: True
+                font_size: (root.width**2 + root.height**2) / 14.5**4
+
+        Button:
+            pos_hint:{"x":0.58333,"top":0.1666}
+            size_hint: 0.25, 0.041666
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+            text: "Cancel"
+            on_release:
+                root.manager.transition.direction = "left"
+                root.login()
+
+        Button:
+            pos_hint:{"x":0.1666,"top":0.1666}
+            size_hint: 0.25, 0.041666
+            text: "Submit"
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+            on_release:
+                root.manager.transition.direction = "left"
+                root.submit()
+
+<ActionWindow>:
+    name: "action"
+
+    FloatLayout:
+        cols:1
+
+        FloatLayout:
+            size: root.width, root.height
+
+            Image:
+                size_hint_x: 0.5
+                pos_hint: {"x":0.25, "top":1.24999}
+                source: 'l2.jpg'
+                allow_stretch: True
+                keep_ratio: True
+
+            Button:
+                text: "Upload"
+                pos_hint: {"x":0.1666, "top":0.541666}
+                size_hint: 0.66, 0.041666
+                font_size: (root.width**2 + root.height**2) / 14.5**4
+                on_release:
+                    root.upload()
+
+            Button:
+                text: "All Music"
+                pos_hint: {"x":0.1666, "top":0.41666}
+                size_hint: 0.66, 0.041666
+                font_size: (root.width**2 + root.height**2) / 14.5**4
+                on_release:
+                    root.music()
+
+            Button:
+                text: "Sleep"
+                pos_hint: {"x":0.1666, "top":0.291666}
+                size_hint: 0.66, 0.041666
+                font_size: (root.width**2 + root.height**2) / 14.5**4
+
+            Button:
+                text: "Logout"
+                pos_hint:{"x":0.1666,"top":0.1666}
+                size_hint: 0.66, 0.041666
+                font_size: (root.width**2 + root.height**2) / 14.5**4
+                on_release:
+                    app.root.current = "login"
+                    root.manager.transition.direction = "down"
+
+<LoginWindow>:
+    name: "login"
+
+    email: email
+    password: password
+
+    FloatLayout:
+        Image:
+            size_hint_x: 0.5
+            pos_hint: {"x":0.25, "top":1.24999}
+            source: 'l2.jpg'
+            allow_stretch: True
+            keep_ratio: True
+
+        TextInput:
+            text: "e@mail.com"
+            pos_hint: {"x":0.1666, "top":0.41666}
+            size_hint: 0.66, 0.041666
+            id: email
+            multiline: False
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+
+        TextInput:
+            text: "password"
+            pos_hint: {"x":0.1666, "top":0.291666}
+            size_hint: 0.66, 0.041666
+            id: password
+            password: True
+            multiline: False
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+
+        Button:
+            pos_hint:{"x":0.1666,"top":0.1666}
+            size_hint: 0.25, 0.041666
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+            text: "Login"
+            on_release:
+                root.manager.transition.direction = "up"
+                root.loginBtn()
+
+        Button:
+            pos_hint:{"x":0.58333,"top":0.1666}
+            size_hint: 0.25, 0.041666
+            text: "Register"
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+            on_release:
+                root.manager.transition.direction = "right"
+                root.createBtn()
+
+<UploadWindow>:
+    name: "upload"
+    filename:filename
+
+    FloatLayout:
+        Image:
+            size_hint_x: 0.5
+            pos_hint: {"x":0.25, "top":1.24999}
+            source: 'l2.jpg'
+            allow_stretch: True
+            keep_ratio: True
+
+        TextInput:
+            id: filename
+            multiline: False
+            pos_hint: {"x":0.1666, "top":0.41666}
+            size_hint: 0.66, 0.041666
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+
+        Button:
+            text: "Upload"
+            pos_hint: {"x":0.1666, "top":0.291666}
+            size_hint: 0.66, 0.041666
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+            on_release:
+                root.upload()
+        
+        Button:
+            text: "Back"
+            pos_hint: {"x":0.1666, "top":0.1666}
+            size_hint: 0.25, 0.041666
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+            on_release:
+                root.back()
+
+        Button:
+            text: "Logout"
+            pos_hint:{"x":0.58333,"top":0.1666}
+            size_hint: 0.25, 0.041666
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+            on_release:
+                app.root.current = "login"
+                root.manager.transition.direction = "down"
+
+<playRemove>:
+    name: "playRm"
+
+    FloatLayout:
+        Image:
+            size_hint_x: 0.5
+            pos_hint: {"x":0.25, "top":1.24999}
+            source: 'l2.jpg'
+            allow_stretch: True
+            keep_ratio: True
+
+        Button:
+            text: "Play"
+            pos_hint: {"x":0.1666, "top":0.541666}
+            size_hint: 0.66, 0.041666
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+            on_release:
+                root.play()
+
+        Button:
+            text: "Remove"
+            pos_hint: {"x":0.1666, "top":0.41666}
+            size_hint: 0.66, 0.041666
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+            on_release:
+                root.remove()
+
+        Button:
+            text: "Add to Queue"
+            pos_hint: {"x":0.1666, "top":0.291666}
+            size_hint: 0.66, 0.041666
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+            on_release:
+                root.addQ()
+
+        Button:
+            text: "Back"
+            pos_hint:{"x":0.1666,"top":0.1666}
+            size_hint: 0.66, 0.041666
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+            on_release:
+                root.back()
+
+<allMusic>:
+    name: "allMusic"
+
+
+<MainWindow>:
+    name: "currPlay"
+
+    FloatLayout:
+        Image:
+            size_hint_x: 0.5
+            pos_hint: {"x":0.25, "top":1.24999}
+            source: 'l2.jpg'
+            allow_stretch: True
+            keep_ratio: True
+
+        Label:
+            text:"Name goes hither"
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+            pos_hint: {"x":0.1666, "top":0.625}
+            size_hint: 0.66, 0.041666
+
+        Label:
+            text:"Time goes hither"
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+            pos_hint: {"x":0.1666, "top":0.25}
+            size_hint: 0.66, 0.041666
+
+        Button:
+            text: "PLAY"
+            pos_hint: {"x":0.41666, "top":0.541666}
+            size_hint: 0.1666, 0.08333
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+            on_release:
+                root.playSong()
+        
+        Button:
+            text: "STOP"
+            pos_hint: {"x":0.41666, "top":0.3333}
+            size_hint: 0.166, 0.041666
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+            on_release:
+                root.stopSong()
+        
+        Button:
+            text: "<<"
+            pos_hint: {"x":0.25, "top":0.41666}
+            size_hint: 0.1666, 0.041666
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+            on_release:
+                root.prevSong()
+
+        Button:
+            text: ">>"
+            pos_hint:{"x":0.58333,"top":0.41666}
+            size_hint: 0.1666, 0.041666
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+            on_release:
+                root.nextSong()    
+        
+        Button:
+            text: "Back"
+            pos_hint: {"x":0.1666, "top":0.1666}
+            size_hint: 0.25, 0.041666
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+            on_release:
+                root.back()
+
+        Button:
+            text: "Logout"
+            pos_hint:{"x":0.58333,"top":0.1666}
+            size_hint: 0.25, 0.041666
+            font_size: (root.width**2 + root.height**2) / 14.5**4
+            on_release:
+                app.root.current = "login"
+                root.manager.transition.direction = "down"
